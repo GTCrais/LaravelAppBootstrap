@@ -1,0 +1,22 @@
+{
+    "name": "gtcrais/laravel-app-bootstrap",
+    "description": "Application Bootstrap for Laravel 5.4+",
+    "keywords": ["Laravel App Bootstrap", "Laravel Application Bootstrap"],
+    "authors": [
+        {
+            "name": "Tomislav Modrić",
+            "email": "tomislav@gtcrais.net"
+        }
+    ],
+    "license": "MIT",
+    "minimum-stability": "stable",
+    "autoload": {
+        "psr-4": {
+            "GTCrais\\LaravelAppBootstrap\\": "src"
+        }
+    },
+    "require": {
+        "barryvdh/laravel-ide-helper": "^2.3",
+        "phanan/cascading-config": "~2.0"
+    }
+}
