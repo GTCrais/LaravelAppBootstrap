@@ -20,7 +20,8 @@ use it at all, and much prefer cascading config over it. Thank you [@Phan An](ht
 
 Use exclusively on a fresh Laravel installation.
 
-- add `"gtcrais/laravel-app-bootstrap": "1.*"` to your `composer.json` and run `composer update`
+- add `"gtcrais/laravel-app-bootstrap": "1.0.*"` to your `composer.json` and run `composer update`
+- add `GTCrais\LaravelAppBootstrap\LaravelAppBootstrapServiceProvider::class,` to providers array in `/config/app.php`
 - run `php artisan lab:setup`
 - fill in data about your application
 
