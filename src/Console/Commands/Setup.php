@@ -73,6 +73,9 @@ class Setup extends Command
 		// Add Development DB config to /config.localdev/database.php
 		$this->addDevelopmentDatabaseConfig($database, $databaseUsername, $databasePassword, $databasePrefix);
 
+		// Create database if it doesn't exist
+		$this->createDatabase($database, $databaseUsername, $databasePassword);
+
 		// Delete .env files
 		$this->deleteEnv();
 
@@ -186,6 +189,20 @@ class Setup extends Command
 			));
 		} catch (\Exception $e) {
 			$this->info('Development database config could not be added.');
+		}
+	}
+
+	protected function createDatabase($database, $username, $password)
+	{
+		try {
+			$options = [
+				\PDO::ATTR_ERRMODE            => \PDO::ERRMODE_EXCEPTION
+			];
+
+			$pdo = new \PDO('mysql:host=localhost;port=3306', $username, $password, $options);
+			$pdo->exec("CREATE DATABASE IF NOT EXISTS " . $database .  " CHARACTER SET = 'utf8mb4' COLLATE = 'utf8mb4_unicode_ci'");
+		} catch (\Exception $e) {
+			$this->info('Database could not be created.');
 		}
 	}
 
