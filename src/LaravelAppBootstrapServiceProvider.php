@@ -7,7 +7,8 @@ use Illuminate\Support\ServiceProvider;
 class LaravelAppBootstrapServiceProvider extends ServiceProvider
 {
 	protected $commands = [
-		'GTCrais\LaravelAppBootstrap\Console\Commands\Setup'
+		'GTCrais\LaravelAppBootstrap\Console\Commands\Setup',
+		'GTCrais\LaravelAppBootstrap\Console\Commands\GenerateKey'
 	];
 
 	/**
