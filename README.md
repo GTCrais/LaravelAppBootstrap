@@ -14,20 +14,24 @@ packages
 - adds `/bootstrap/env.php` file and deletes `.env` file, effectively disposing of `DotEnv` usage in your application.   
 You should [not use DotEnv in production](https://github.com/laravel/framework/issues/8191). Personally, I prefer not to
 use it at all, and much prefer cascading config over it. Thank you [@Phan An](https://github.com/phanan/cascading-config)
-- prompts user for application info and sets appropriate config options
+- prompts user for application info and sets appropriate config options, and creates the database
 
 ## Installation
 
 Use exclusively on a fresh Laravel installation.
 
-- add `"gtcrais/laravel-app-bootstrap": "1.1.*"` to your `composer.json` and run `composer update`
+- add `"gtcrais/laravel-app-bootstrap": "1.2.*"` to your `composer.json` and run `composer update`
 - add `GTCrais\LaravelAppBootstrap\LaravelAppBootstrapServiceProvider::class,` to providers array in `/config/app.php`
 - run `php artisan lab:setup`
 - fill in data about your application
 
 Your application is now set up, and using `localdev` environment.
 
-Since getting rid of `.env` file obviously breaks `php artisan key:generate` command, Laravel App Bootstrap
+## Notes
+
+- Laravel App Bootstrap assumes your're using `MySQL` on `localhost`, port `3306`. If this is not the case, after bootstrapping 
+you'll need to adjust your database config options and manually create the database.
+- since getting rid of `.env` file obviously breaks `php artisan key:generate` command, Laravel App Bootstrap
 provides a substitution: `lab:key-generate`
 
 ## License
