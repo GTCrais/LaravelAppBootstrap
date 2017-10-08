@@ -196,7 +196,7 @@ class Setup extends Command
 	{
 		try {
 			$options = [
-				\PDO::ATTR_ERRMODE            => \PDO::ERRMODE_EXCEPTION
+				\PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION
 			];
 
 			$pdo = new \PDO('mysql:host=localhost;port=3306', $username, $password, $options);

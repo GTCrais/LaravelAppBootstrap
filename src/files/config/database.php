@@ -67,6 +67,17 @@ return [
             'sslmode' => 'prefer',
         ],
 
+		'sqlsrv' => [
+			'driver' => 'sqlsrv',
+			'host' => 'localhost',
+			'port' => '1433',
+			'database' => 'forge',
+			'username' => 'forge',
+			'password' => '',
+			'charset' => 'utf8',
+			'prefix' => '',
+		],
+
     ],
 
     /*
