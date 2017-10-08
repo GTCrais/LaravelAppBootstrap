@@ -16,7 +16,14 @@
         }
     },
     "require": {
-        "barryvdh/laravel-ide-helper": "^2.3",
+        "barryvdh/laravel-ide-helper": "^2.4",
         "phanan/cascading-config": "~2.0"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "GTCrais\\LaravelAppBootstrap\\LaravelAppBootstrapServiceProvider"
+            ]
+        }
     }
 }

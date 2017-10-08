@@ -32,11 +32,24 @@ class LaravelAppBootstrapServiceProvider extends ServiceProvider
 	 */
 	public function register()
 	{
-		if ($this->app->environment() != 'production') {
+		if ($this->providerRegistrationRequired() && $this->app->environment() != 'production') {
 			$this->app->register('Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider');
 		}
 		$this->app->register('PhanAn\CascadingConfig\CascadingConfigServiceProvider');
 
 		$this->commands($this->commands);
+	}
+
+	protected function providerRegistrationRequired()
+	{
+		$fullVersion = explode(".", $this->app->version());
+		$majorVersion = $fullVersion[0];
+		$minorVersion = $fullVersion[1];
+
+		if ($majorVersion == 5 && $minorVersion < 5) {
+			return true;
+		}
+
+		return false;
 	}
 }

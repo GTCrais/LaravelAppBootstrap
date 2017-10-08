@@ -82,6 +82,9 @@ class Setup extends Command
 		// Add /bootstrap/env.php to .gitignore
 		$this->updateGitIgnore();
 
+		// Generate application key if needed
+		$this->generateKey();
+
 		$this->info("Your application has been bootstrapped!");
     }
 
@@ -196,7 +199,7 @@ class Setup extends Command
 	{
 		try {
 			$options = [
-				\PDO::ATTR_ERRMODE            => \PDO::ERRMODE_EXCEPTION
+				\PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION
 			];
 
 			$pdo = new \PDO('mysql:host=localhost;port=3306', $username, $password, $options);
@@ -250,6 +253,13 @@ class Setup extends Command
 			}
 		} catch (\Exception $e) {
 			$this->info('.gitignore file could not be updated.');
+		}
+	}
+
+	protected function generateKey()
+	{
+		if (!config('app.key')) {
+			$this->call('lab:generate-key');
 		}
 	}
 }
